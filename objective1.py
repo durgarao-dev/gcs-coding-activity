@@ -2,17 +2,21 @@ import requests
 import click
 import json
 import os
+import json
+from dotenv import load_dotenv
 
-api_key = "85e0a846a5cc4506e272ab08f51db22d"
+# Load environment variables from .env file
+load_dotenv()
+api_key = os.getenv('OPEN_WEATHER_API_KEY')
 api_url = "https://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_id}&units=imperial"
 fav_file = 'favorites.json'
 
 # Load existing favorites from a file or create a new list
 if os.path.exists(fav_file):
-    with open(fav_file, 'r') as file:
-        FAV_LIST = json.load(file)
+  with open(fav_file, 'r') as file:
+    FAV_LIST = json.load(file)
 else:
-    FAV_LIST = []
+  FAV_LIST = []
 
 # Function to add favorites to list
 def save_favorites():
@@ -35,7 +39,7 @@ def parse_weather_data(api_resp):
     humidity= api_resp['main']['humidity']
     wind_speed= api_resp['wind']['speed']
     weather_details = (
-       "Weather Details for {}:\n"
+       "Weather Details for {}\n"
        "Temperature: {}°F\n"
        "Humidity: {}%\n" 
        "Wind Speed: {} miles/hr\n").format(name,temperature, humidity, wind_speed)

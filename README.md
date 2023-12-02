@@ -4,6 +4,14 @@
 
 The file favorites.json contains the list of favorite cities. The file is updated when a city is added or updated.
 The file objective1.py contains the code for objective 1. The code is written in Python 3.12.0.
+
+## Setup instructions
+
+Create a `.env` file in the root directory of the project and add the following lines to it:
+```OPEN_WEATHER_API_KEY = "your api key"```
+
+```pip install -r requirements.txt```  # To install all the dependencies
+
 The code can be run in the terminal by typing the following command:
 
 ```python objective1.py```
